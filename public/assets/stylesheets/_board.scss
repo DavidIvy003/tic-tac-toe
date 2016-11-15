@@ -1,0 +1,22 @@
+$board-size: 360px;
+$square-size: $board-size/3 - 2;
+
+.squares {
+  width: $board-size;
+  .square {
+    width: $square-size;
+    height: $square-size;
+    float: left;
+    &:nth-child(even), &:nth-child(5) {
+      border: 2px solid #555;
+    }
+    &:nth-child(2), &:nth-child(8) {
+      border-top: none;
+      border-bottom: none;
+    }
+    &:nth-child(4), &:nth-child(6) {
+      border-right: none;
+      border-left: none;
+    }
+  }
+}
