@@ -1,1 +1,2 @@
-import $ from 'jquery';
+import $ from 'jquery'
+import Game from './game'
