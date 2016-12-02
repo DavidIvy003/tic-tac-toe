@@ -4,12 +4,13 @@ const Board = function() {
 
 }
 
-Board.prototype.setup = function() {
-  this.state = Array(8);
-}
-
-Board.prototype.checkForWin = function() {
-  return _checkRows(this.state) || _checkColumns(this.state) || _checkDiagonals(this.state) || false
+Board.prototype = {
+  setup() {
+    this.state = Array(8);
+  },
+  checkForWin() {
+    return _checkRows(this.state) || _checkColumns(this.state) || _checkDiagonals(this.state) || false
+  }
 }
 
 function _checkRows(state) {
