@@ -1,7 +1,7 @@
 const assert = require('assert');
 
 describe('Board', function() {
-  const board = new require('../public/assets/javascript/board')
+  const board = require('../public/assets/javascript/board')
   const Board = new board()
 
   describe('checkForWin', function() {
