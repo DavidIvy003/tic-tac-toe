@@ -1,7 +1,6 @@
 class Player {
   constructor(opt) {
     this.symbol = opt.symbol
-    this.bindEvents()
   }
 }
 

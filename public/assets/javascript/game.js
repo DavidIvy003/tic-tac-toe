@@ -24,7 +24,6 @@ class Game {
   }
   nextPlayer() {
     this.currentPlayerIndex = this.currentPlayerIndex == 0 ? 1 : 0
-    console.log('player', this.currentPlayerIndex)
   }
   selectSquare(position) {
     this.board.update(position, this.currentPlayerIndex)

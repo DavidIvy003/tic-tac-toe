@@ -1,14 +1,19 @@
-'use strict';
+import $ from 'jquery'
 
 class Board {
   constructor() {
-    this.state = Array(8);
+    this.state = Array(8)
+    this.updateBoard()
   }
   checkForWin() {
     return _checkRows(this.state) || _checkColumns(this.state) || _checkDiagonals(this.state) || false
   }
   update(position, symbol) {
     this.state[position] = symbol
+    this.updateBoard()
+  }
+  updateBoard() {
+    this.state.forEach((value, index) => $('.square[data-choice="' + index +'"]').html(value))
   }
 }
 
