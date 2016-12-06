@@ -1,16 +1,12 @@
 'use strict';
 
-const Board = function() {
-
-}
-
-Board.prototype = {
-  setup() {
+class Board {
+  constructor() {
     this.state = Array(8);
-  },
+  }
   checkForWin() {
     return _checkRows(this.state) || _checkColumns(this.state) || _checkDiagonals(this.state) || false
-  },
+  }
   update(position, symbol) {
     this.state[position] = symbol
   }
