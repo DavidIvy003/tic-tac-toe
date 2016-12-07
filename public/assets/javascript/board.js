@@ -13,8 +13,10 @@ class Board {
     return _checkRows(this.state) || _checkColumns(this.state) || _checkDiagonals(this.state) || false
   }
   update(position, symbol) {
+    if (this.state[position]) return false
     this.state[position] = symbol
     this.updateBoard()
+    return true
   }
   updateBoard() {
     this.state.forEach((value, index) => $('.square[data-choice="' + index +'"]').html(value ? value : ''))

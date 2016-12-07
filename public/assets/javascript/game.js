@@ -34,8 +34,8 @@ class Game {
     this.currentPlayer().startTurn()
   }
   selectSquare(position) {
-    this.board.update(position, this.currentPlayer().symbol)
-    this.nextTurn()
+    let nextTurn = this.board.update(position, this.currentPlayer().symbol)
+    if (nextTurn) this.nextTurn()
   }
 }
 
