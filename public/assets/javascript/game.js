@@ -5,8 +5,8 @@ class Game {
   constructor() {
     this.players = []
     this.board = new Board()
-    this.players.push(new Player({ symbol: 'o' }))
-    this.players.push(new Player({ symbol: 'x' }))
+    this.players.push(new Player({ symbol: 'o', game: this }))
+    this.players.push(new Player({ symbol: 'x', game: this }))
 
     this.currentPlayerIndex = 0
 
@@ -19,16 +19,19 @@ class Game {
   nextTurn() {
     if (this.board.checkForWin()) {
       // Handle win
+      console.log('winner winner chicken dinner')
     }
-    this.nextPlayer()
+    setTimeout(() => this.nextPlayer(), 10)
   }
   nextPlayer() {
-    this.currentPlayerIndex = this.currentPlayerIndex == 0 ? 1 : 0
+    this.currentPlayer().endTurn()
+    this.currentPlayerIndex = this.currentPlayerIndex === 0 ? 1 : 0
+    this.currentPlayer().startTurn()
   }
   selectSquare(position) {
-    this.board.update(position, this.currentPlayerIndex)
-    nextTurn()
+    this.board.update(position, this.currentPlayer().symbol)
+    this.nextTurn()
   }
 }
 
-module.exports = Game;
+module.exports = Game

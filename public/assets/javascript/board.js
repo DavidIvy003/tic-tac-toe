@@ -41,4 +41,4 @@ function _checkDiagonals(state) {
   }
 }
 
-module.exports = Board;
+module.exports = Board
