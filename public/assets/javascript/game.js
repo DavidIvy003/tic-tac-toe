@@ -11,7 +11,9 @@ class Game {
     this.currentPlayerIndex = 0
 
     this.nextTurn()
-
+  }
+  reset() {
+    this.board.reset()
   }
   currentPlayer() {
     return this.players[this.currentPlayerIndex]
@@ -20,6 +22,9 @@ class Game {
     if (this.board.checkForWin()) {
       // Handle win
       console.log('winner winner chicken dinner')
+      this.currentPlayer().youWin()
+      this.currentPlayer().youLose()
+      this.reset()
     }
     setTimeout(() => this.nextPlayer(), 10)
   }

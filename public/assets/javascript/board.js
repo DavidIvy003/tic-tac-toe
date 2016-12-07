@@ -2,7 +2,11 @@ import $ from 'jquery'
 
 class Board {
   constructor() {
-    this.state = Array(8)
+    this.state = new Array(9)
+    this.reset()
+  }
+  reset() {
+    this.state = this.state.map(() => undefined)
     this.updateBoard()
   }
   checkForWin() {
@@ -13,7 +17,7 @@ class Board {
     this.updateBoard()
   }
   updateBoard() {
-    this.state.forEach((value, index) => $('.square[data-choice="' + index +'"]').html(value))
+    this.state.forEach((value, index) => $('.square[data-choice="' + index +'"]').html(value ? value : ''))
   }
 }
 

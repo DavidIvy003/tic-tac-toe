@@ -5,6 +5,8 @@ class Player {
     this.symbol = opt.symbol
     this.game = opt.game
     this.bindEvents()
+    this.wins = 0
+    this.loses = 0
   }
   startTurn() {
     this.turn = true
@@ -14,6 +16,12 @@ class Player {
   }
   myTurn() {
     return this.turn
+  }
+  youWin() {
+    this.wins++
+  }
+  youLose() {
+    this.loses++
   }
   bindEvents() {
     $(document).on('click', '.square', (event) => {
