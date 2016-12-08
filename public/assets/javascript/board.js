@@ -12,6 +12,9 @@ class Board {
   checkForWin() {
     return _checkRows(this.state) || _checkColumns(this.state) || _checkDiagonals(this.state) || false
   }
+  checkForTie() {
+    return !this.state.includes(undefined)
+  }
   update(position, symbol) {
     if (this.state[position]) return false
     this.state[position] = symbol

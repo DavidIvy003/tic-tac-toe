@@ -7,6 +7,7 @@ class Player {
     this.bindEvents()
     this.wins = 0
     this.loses = 0
+    this.draw = 0
   }
   startTurn() {
     this.turn = true
@@ -22,6 +23,9 @@ class Player {
   }
   youLose() {
     this.loses++
+  }
+  youTie() {
+    this.draw++
   }
   bindEvents() {
     $(document).on('click', '.square', (event) => {

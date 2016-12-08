@@ -25,6 +25,11 @@ class Game {
       this.currentPlayer().youWin()
       this.currentPlayer().youLose()
       this.reset()
+    } else if (this.board.checkForTie()) {
+      console.log("it's a pizza tie")
+      this.currentPlayer().youTie()
+      this.currentPlayer().youTie()
+      this.reset()
     }
     setTimeout(() => this.nextPlayer(), 10)
   }
