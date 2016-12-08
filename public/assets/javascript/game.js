@@ -5,8 +5,8 @@ class Game {
   constructor() {
     this.players = []
     this.board = new Board()
-    this.players.push(new Player({ symbol: 'o', game: this }))
-    this.players.push(new Player({ symbol: 'x', game: this }))
+    this.players.push(new Player({ symbol: 'o', type: 'human', game: this }))
+    this.players.push(new Player({ symbol: 'x', type: 'random', game: this }))
 
     this.currentPlayerIndex = 0
 
@@ -41,6 +41,9 @@ class Game {
   selectSquare(position) {
     let nextTurn = this.board.update(position, this.currentPlayer().symbol)
     if (nextTurn) this.nextTurn()
+  }
+  choiceOptions() {
+    return this.board.state.map((a, i) => { if (!a) return i }).filter(Number)
   }
 }
 
