@@ -31,9 +31,10 @@ class Player {
   }
   makeMove() {
     if (this.type === 'human') return
+    let choice
     let options = this.game.choiceOptions()
     if (this.type === 'random') {
-      let choice = options[Math.floor(Math.random() * options.length)]
+      choice = options[Math.floor(Math.random() * options.length)]
     }
     this.game.selectSquare(choice)
   }
