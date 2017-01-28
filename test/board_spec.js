@@ -3,104 +3,107 @@ const assert = require('assert');
 describe('Board', function() {
   const board = require('../public/assets/javascript/board')
   const Board = new board()
+  const X = 'X'
+  const O = 'O'
+  const BLANK = BLANK
 
   describe('checkForWin', function() {
     it('should correctly check top row', function() {
       Board.reset();
 
-      assert.deepEqual(Board.state, [undefined, undefined, undefined,
-                                     undefined, undefined, undefined,
-                                     undefined, undefined, undefined]);
+      assert.deepEqual(Board.state, [BLANK, BLANK, BLANK,
+                                     BLANK, BLANK, BLANK,
+                                     BLANK, BLANK, BLANK]);
     });
   });
 
   describe('checkForWin', function() {
     describe('checkRows', function() {
       it('should correctly check top row', function() {
-        Board.state = [0, 0, 0,
-                       undefined, undefined, undefined,
-                       undefined, undefined, undefined]
+        Board.state = [O, O, O,
+                       BLANK, BLANK, BLANK,
+                       BLANK, BLANK, BLANK]
 
         assert.equal(Board.checkForWin(), true);
       });
       it('should correctly check middle row', function() {
-        Board.state = [undefined, undefined, undefined,
-                       0, 0, 0,
-                       undefined, undefined, undefined]
+        Board.state = [BLANK, BLANK, BLANK,
+                       O, O, O,
+                       BLANK, BLANK, BLANK]
 
         assert.equal(Board.checkForWin(), true);
       });
       it('should correctly check bottom row', function() {
-        Board.state = [undefined, undefined, undefined,
-                       undefined, undefined, undefined,
-                       1, 1, 1]
+        Board.state = [BLANK, BLANK, BLANK,
+                       BLANK, BLANK, BLANK,
+                       X, X, X]
 
         assert.equal(Board.checkForWin(), true);
       });
       it('should correctly identify no win', function() {
-        Board.state = [undefined, undefined, undefined,
-                       undefined, undefined, undefined,
-                       undefined, 0, 0]
+        Board.state = [BLANK, BLANK, BLANK,
+                       BLANK, BLANK, BLANK,
+                       BLANK, O, O]
         assert.equal(Board.checkForWin(), false);
       });
     });
 
     describe('checkColumns', function() {
       it('should correctly check first column', function() {
-        Board.state = [0, undefined, undefined,
-                       0, undefined, undefined,
-                       0, undefined, undefined]
+        Board.state = [O, BLANK, BLANK,
+                       O, BLANK, BLANK,
+                       O, BLANK, BLANK]
 
         assert.equal(Board.checkForWin(), true);
       });
       it('should correctly check middle row', function() {
-        Board.state = [undefined, 0, undefined,
-                       undefined, 0, undefined,
-                       undefined, 0, undefined]
+        Board.state = [BLANK, O, BLANK,
+                       BLANK, O, BLANK,
+                       BLANK, O, BLANK]
 
         assert.equal(Board.checkForWin(), true);
       });
       it('should correctly check bottom row', function() {
-        Board.state = [undefined, undefined, 1,
-                       undefined, undefined, 1,
-                       undefined, undefined, 1]
+        Board.state = [BLANK, BLANK, X,
+                       BLANK, BLANK, X,
+                       BLANK, BLANK, X]
 
         assert.equal(Board.checkForWin(), true);
       });
       it('should correctly identify no win', function() {
-        Board.state = [undefined, undefined, undefined,
-                       undefined, 0, undefined,
-                       undefined, 0, undefined]
+        Board.state = [BLANK, BLANK, BLANK,
+                       BLANK, O, BLANK,
+                       BLANK, O, BLANK]
         assert.equal(Board.checkForWin(), false);
       });
     });
 
     describe('checkDiagonal', function() {
       it('should correctly check first column', function() {
-        Board.state = [0, undefined, undefined,
-                       undefined, 0, undefined,
-                       undefined, undefined, 0]
+        Board.state = [O, BLANK, BLANK,
+                       BLANK, O, BLANK,
+                       BLANK, BLANK, O]
 
         assert.equal(Board.checkForWin(), true);
       });
       it('should correctly check middle row', function() {
-        Board.state = [undefined, undefined, 0,
-                       undefined, 0, undefined,
-                       0, undefined, undefined]
+        Board.state = [BLANK, BLANK, O,
+                       BLANK, O, BLANK,
+                       O, BLANK, BLANK]
 
         assert.equal(Board.checkForWin(), true);
       });
       it('should correctly check middle row', function() {
-        Board.state = [undefined, undefined, 1,
-                       undefined, 1, undefined,
-                       1, undefined, undefined]
+        Board.state = [BLANK, BLANK, X,
+                       BLANK, X, BLANK,
+                       X, BLANK, BLANK]
 
         assert.equal(Board.checkForWin(), true);
       });
       it('should correctly identify no win', function() {
-        Board.state = [undefined, undefined, undefined,
-                       undefined, 0, undefined,
-                       undefined, 0, 0]
+        Board.state = [BLANK, BLANK, BLANK,
+                       BLANK, O, BLANK,
+                       BLANK, O, O]
         assert.equal(Board.checkForWin(), false);
       });
     });
@@ -108,16 +111,16 @@ describe('Board', function() {
 
   describe('checkForTie', function() {
     it('should correctly identify a tie', function() {
-      Board.state = [1, 1, 0,
-                     0, 0, 1,
-                     1, 0, 0]
+      Board.state = [X, X, O,
+                     O, O, X,
+                     X, O, O]
       assert.equal(Board.checkForTie(), true);
     });
 
     it('should correctly identify no tie', function() {
-      Board.state = [1, 1, undefined,
-                     0, 0, 1,
-                     1, 0, 0]
+      Board.state = [X, X, BLANK,
+                     O, O, X,
+                     X, O, O]
       assert.equal(Board.checkForTie(), false);
     });
   });
@@ -125,15 +128,15 @@ describe('Board', function() {
   describe('update', function() {
     it('can update the state', function() {
       Board.reset();
-      Board.update(0, 1);
-      assert.deepEqual(Board.state, [1, undefined, undefined,
-                                     undefined, undefined, undefined,
-                                     undefined, undefined, undefined]);
+      Board.update(0, X);
+      assert.deepEqual(Board.state, [X, BLANK, BLANK,
+                                     BLANK, BLANK, BLANK,
+                                     BLANK, BLANK, BLANK]);
 
-      Board.update(8, 0);
-      assert.deepEqual(Board.state, [1, undefined, undefined,
-                                     undefined, undefined, undefined,
-                                     undefined, undefined, 0]);
+      Board.update(8, O);
+      assert.deepEqual(Board.state, [X, BLANK, BLANK,
+                                     BLANK, BLANK, BLANK,
+                                     BLANK, BLANK, O]);
     });
   });
 
