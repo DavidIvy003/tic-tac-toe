@@ -4,7 +4,7 @@
     "watch-css": "nodemon -e scss -x \"npm run build-css\"",
     "build": "browserify public/assets/javascript/main.js -o public/assets/javascript/bundle.js",
     "watch": "watchify public/assets/javascript/main.js -o public/assets/javascript/bundle.js -dv",
-    "test": "mocha"
+    "test": "mocha --require ./test/testHelper.js"
   },
   "dependencies": {
     "jquery": "^2.1.4"
