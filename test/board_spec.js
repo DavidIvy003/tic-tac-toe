@@ -5,6 +5,16 @@ describe('Board', function() {
   const Board = new board()
 
   describe('checkForWin', function() {
+    it('should correctly check top row', function() {
+      Board.reset();
+
+      assert.deepEqual(Board.state, [undefined, undefined, undefined,
+                                     undefined, undefined, undefined,
+                                     undefined, undefined, undefined]);
+    });
+  });
+
+  describe('checkForWin', function() {
     describe('checkRows', function() {
       it('should correctly check top row', function() {
         Board.state = [0, 0, 0,
@@ -93,6 +103,37 @@ describe('Board', function() {
                        undefined, 0, 0]
         assert.equal(Board.checkForWin(), false);
       });
+    });
+  });
+
+  describe('checkForTie', function() {
+    it('should correctly identify a tie', function() {
+      Board.state = [1, 1, 0,
+                     0, 0, 1,
+                     1, 0, 0]
+      assert.equal(Board.checkForTie(), true);
+    });
+
+    it('should correctly identify no tie', function() {
+      Board.state = [1, 1, undefined,
+                     0, 0, 1,
+                     1, 0, 0]
+      assert.equal(Board.checkForTie(), false);
+    });
+  });
+
+  describe('update', function() {
+    it('can update the state', function() {
+      Board.reset();
+      Board.update(0, 1);
+      assert.deepEqual(Board.state, [1, undefined, undefined,
+                                     undefined, undefined, undefined,
+                                     undefined, undefined, undefined]);
+
+      Board.update(8, 0);
+      assert.deepEqual(Board.state, [1, undefined, undefined,
+                                     undefined, undefined, undefined,
+                                     undefined, undefined, 0]);
     });
   });
 
