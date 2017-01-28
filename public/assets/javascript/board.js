@@ -2,13 +2,11 @@ import $ from 'jquery'
 
 class Board {
   constructor() {
-    this.state = []
+    this.state = new Array(9)
     this.reset()
   }
   reset() {
-    for (var i = 0; i < 9; i++) {
-      this.state[i] = undefined
-    }
+    this.state.fill(undefined)
     this.updateBoard()
   }
   checkForWin() {
