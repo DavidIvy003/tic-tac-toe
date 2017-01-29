@@ -2,11 +2,11 @@ import Board from './board'
 import Player from './player'
 
 class Game {
-  constructor() {
+  constructor(computerType = 'random') {
     this.players = []
     this.board = new Board()
     this.players.push(new Player({ symbol: 'o', type: 'human', game: this }))
-    this.players.push(new Player({ symbol: 'x', type: 'random', game: this }))
+    this.players.push(new Player({ symbol: 'x', type: computerType, game: this }))
 
     this.currentPlayerIndex = 0
 
@@ -31,7 +31,7 @@ class Game {
       this.currentPlayer().youTie()
       this.reset()
     }
-    setTimeout(() => this.nextPlayer(), 10)
+    this.nextPlayer()
   }
   nextPlayer() {
     this.currentPlayer().endTurn()
