@@ -53,4 +53,29 @@ describe('Game', function() {
     });
   });
 
+  describe('random', function() {
+    let Player
+    const selectSquareSpy = sinon.spy()
+
+    beforeEach(function() {
+      const Game = new game
+      Game.selectSquare = selectSquareSpy
+      Player = new player({ symbol: 'x', type: 'random', game: Game })
+    })
+
+    it('should init values', function() {
+      assert.equal(Player.symbol, 'x');
+      assert.equal(Player.wins, 0);
+      assert.equal(Player.loses, 0);
+      assert.equal(Player.draws, 0);
+    });
+
+    it('should call select square on start turn', function() {
+      assert(!Player.myTurn());
+      Player.startTurn()
+      assert(Player.myTurn());
+      sinon.assert.calledOnce(selectSquareSpy)
+    });
+  });
+
 });
