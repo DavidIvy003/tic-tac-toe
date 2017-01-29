@@ -8,7 +8,7 @@ class Player {
     this.bindEvents()
     this.wins = 0
     this.loses = 0
-    this.draw = 0
+    this.draws = 0
   }
   startTurn() {
     this.turn = true
@@ -27,7 +27,7 @@ class Player {
     this.loses++
   }
   youTie() {
-    this.draw++
+    this.draws++
   }
   makeMove() {
     if (this.type === 'human') return
