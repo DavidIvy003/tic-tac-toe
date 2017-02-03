@@ -1,4 +1,7 @@
 import $ from 'jquery'
+import computer from './computer'
+
+const Computer = new computer()
 
 class Player {
   constructor(opt) {
@@ -35,6 +38,8 @@ class Player {
     let options = this.game.choiceOptions()
     if (this.type === 'random') {
       choice = options[Math.floor(Math.random() * options.length)]
+    } else if (this.type === 'computer') {
+      choice = Computer.move(options)
     }
     this.game.selectSquare(choice)
   }
