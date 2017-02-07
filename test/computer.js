@@ -1,8 +1,5 @@
-const assert = require('assert');
-
-const X = 'X'
-const O = 'O'
-const BLANK = BLANK
+import assert from 'assert'
+import { X, O, BLANK } from '../public/assets/javascript/config'
 
 describe('Computer', function() {
   const stack = []
