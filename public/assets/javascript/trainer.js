@@ -5,7 +5,7 @@ const TIE_POINTS = 0
 class Trainer {
   constructor(opt) {
   }
-  win(history, computer, computerSymbol) {
+  win(computer, history, computerSymbol) {
     history.forEach((event) => {
       if (event.symbol === computerSymbol) {
         computer.reward(event.state, event.choice, WIN_POINTS)

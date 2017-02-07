@@ -1,8 +1,7 @@
 import $ from 'jquery'
-import computer from './computer'
+import Computer from './computer'
 import trainer from './trainer'
 
-const Computer = new computer()
 const Trainer = new trainer()
 
 class Player {
@@ -14,7 +13,7 @@ class Player {
     this.wins = 0
     this.loses = 0
     this.draws = 0
-    Computer.symbol = this.symbol
+    this.computer = new Computer({ symbol: this.symbol, type: this.type })
   }
   startTurn() {
     this.turn = true
@@ -28,7 +27,7 @@ class Player {
   }
   youWin() {
     this.wins++
-    Trainer.win(this.game.getBoardHistory(), Computer, this.symbol)
+    Trainer.win(this.computer, this.game.getBoardHistory(), this.symbol)
   }
   youLose() {
     this.loses++
@@ -40,11 +39,7 @@ class Player {
     if (this.type === 'human') return
     let choice
     let options = this.game.choiceOptions()
-    if (this.type === 'random') {
-      choice = options[Math.floor(Math.random() * options.length)]
-    } else if (this.type === 'computer') {
-      choice = Computer.move(options)
-    }
+    choice = this.computer.move(options)
     this.game.selectSquare(choice)
   }
   bindEvents() {

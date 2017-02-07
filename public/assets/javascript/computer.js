@@ -1,5 +1,6 @@
 class Computer {
   constructor(opt) {
+    this.type = opt.type
     this.stack = {}
   }
   move(options) {
