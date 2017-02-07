@@ -54,4 +54,19 @@ describe('Game', function() {
     });
   });
 
+  describe('selectSquare', function() {
+    it('should update the board', function() {
+      sinon.spy(Game.board, 'update')
+      Game.selectSquare(4);
+      assert.equal(Game.board.update.getCall(0).args[0], 4);
+      assert.equal(Game.board.update.getCall(0).args[1], 'x');
+    });
+
+    it('should change turns', function() {
+      assert.equal(Game.currentPlayerIndex, 1);
+      Game.selectSquare(4);
+      assert.equal(Game.currentPlayerIndex, 0);
+    });
+  });
+
 });
