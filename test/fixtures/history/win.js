@@ -1,6 +1,4 @@
-const X = 'X'
-const O = 'O'
-const BLANK = BLANK
+import { X, O, BLANK } from '../../../public/assets/javascript/config'
 
 export default [{
   state: [BLANK, BLANK, BLANK,
