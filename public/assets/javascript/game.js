@@ -49,7 +49,7 @@ class Game {
     if (nextTurn) this.nextTurn()
   }
   choiceOptions() {
-    return this.board.state.map((a, i) => { if (!a) return i }).filter(Number)
+    return this.board.state.map((a, i) => { if (!a) return i }).filter((a) => a !== undefined)
   }
   getBoardHistory() {
     return this.board.stack
