@@ -31,6 +31,7 @@ class Player {
   }
   youLose() {
     this.loses++
+    Trainer.lose(this.computer, this.game.getBoardHistory(), this.symbol)
   }
   youTie() {
     this.draws++

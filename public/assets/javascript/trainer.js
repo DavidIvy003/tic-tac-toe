@@ -6,9 +6,15 @@ class Trainer {
   constructor(opt) {
   }
   win(computer, history, computerSymbol) {
+    this.rewardComputer(computer, history, computerSymbol, WIN_POINTS)
+  }
+  lose(computer, history, computerSymbol) {
+    this.rewardComputer(computer, history, computerSymbol, LOSE_POINTS)
+  }
+  rewardComputer(computer, history, computerSymbol, points) {
     history.forEach((event) => {
       if (event.symbol === computerSymbol) {
-        computer.reward(event.state, event.choice, WIN_POINTS)
+        computer.reward(event.state, event.choice, points)
       }
     })
   }
