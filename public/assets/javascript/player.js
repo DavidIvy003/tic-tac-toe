@@ -15,11 +15,11 @@ class Player {
     this.draws = 0
     this.computer = new Computer({ symbol: this.symbol, type: this.type })
   }
-  startTurn() {
+  startTurn(state) {
     this.turn = true
-    this.makeMove()
+    this.makeMove(state)
   }
-  endTurn() {
+  endTurn(state) {
     this.turn = false
   }
   myTurn() {
@@ -36,11 +36,10 @@ class Player {
   youTie() {
     this.draws++
   }
-  makeMove() {
+  makeMove(state) {
     if (this.type === 'human') return
-    let choice
     let options = this.game.choiceOptions()
-    choice = this.computer.move(options)
+    let choice = this.computer.move(state, options)
     this.game.selectSquare(choice)
   }
   bindEvents() {

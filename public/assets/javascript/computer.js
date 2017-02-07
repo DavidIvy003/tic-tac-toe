@@ -3,7 +3,7 @@ class Computer {
     this.type = opt.type
     this.stack = {}
   }
-  move(options) {
+  move(state, options) {
     return options[Math.floor(Math.random() * options.length)]
   }
   reward(state, choice, points) {
