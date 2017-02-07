@@ -1,9 +1,9 @@
-const assert = require('assert');
-const sinon = require('sinon');
+import assert from 'assert'
+import sinon from 'sinon'
+import player from '../public/assets/javascript/player'
+import game from '../public/assets/javascript/game'
 
 describe('Game', function() {
-  const player = require('../public/assets/javascript/player')
-  const game = require('../public/assets/javascript/game')
 
   describe('human', function() {
     let Player

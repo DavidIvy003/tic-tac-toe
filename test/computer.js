@@ -1,9 +1,9 @@
 import assert from 'assert'
 import { X, O, BLANK } from '../public/assets/javascript/config'
+import computer from '../public/assets/javascript/computer'
 
 describe('Computer', function() {
   const stack = []
-  const computer = require('../public/assets/javascript/computer')
   const Computer = new computer({ type: 'computer', symbol: X })
 
   describe('reward', function() {

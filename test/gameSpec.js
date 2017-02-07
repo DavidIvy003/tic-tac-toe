@@ -1,7 +1,7 @@
-const assert = require('assert');
+import assert from 'assert'
+import game from '../public/assets/javascript/game'
 
 describe('Game', function() {
-  const game = require('../public/assets/javascript/game')
   const Game = new game('human')
 
   describe('players', function() {
