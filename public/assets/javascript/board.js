@@ -6,7 +6,9 @@ class Board {
     this.reset()
   }
   reset() {
-    this.state.fill(undefined)
+    var newState = [...this.state]
+    this.state = newState.fill(undefined)
+    this.stack = []
     this.updateBoard()
   }
   checkForWin() {
@@ -17,7 +19,10 @@ class Board {
   }
   update(position, symbol) {
     if (this.state[position]) return false
-    this.state[position] = symbol
+    this.stack.push({ state: this.state, choice: position, symbol: symbol })
+    var newState = [...this.state]
+    newState[position] = symbol
+    this.state = newState
     this.updateBoard()
     return true
   }
