@@ -23,7 +23,7 @@ class Computer {
   }
   getStateReward(state, choice) {
     const stateKey = this.stringifyState(state, choice)
-    return stack[stateKey]
+    return this.stack[stateKey]
   }
 }
 
