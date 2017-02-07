@@ -18,24 +18,30 @@ class Game {
   currentPlayer() {
     return this.players[this.currentPlayerIndex]
   }
+  opposingPlayer() {
+    return this.players[this.opposingPlayerIndex()]
+  }
+  opposingPlayerIndex() {
+    return this.currentPlayerIndex === 0 ? 1 : 0
+  }
   nextTurn() {
     if (this.board.checkForWin()) {
       // Handle win
       console.log('winner winner chicken dinner')
       this.currentPlayer().youWin()
-      this.currentPlayer().youLose()
+      this.opposingPlayer().youLose()
       this.reset()
     } else if (this.board.checkForTie()) {
       console.log("it's a pizza tie")
       this.currentPlayer().youTie()
-      this.currentPlayer().youTie()
+      this.opposingPlayer().youTie()
       this.reset()
     }
     this.nextPlayer()
   }
   nextPlayer() {
     this.currentPlayer().endTurn(this.board.state)
-    this.currentPlayerIndex = this.currentPlayerIndex === 0 ? 1 : 0
+    this.currentPlayerIndex = this.opposingPlayerIndex()
     this.currentPlayer().startTurn(this.board.state)
   }
   selectSquare(position) {
