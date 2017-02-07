@@ -24,34 +24,27 @@ describe('Game', function() {
     });
 
     it('should alert players on game win', function() {
-      const player1YouWinSpy = sinon.spy()
-      const player1YouLoseSpy = sinon.spy()
-      const player2YouWinSpy = sinon.spy()
-      const player2YouLoseSpy = sinon.spy()
-      Game.players[0].youWin = player1YouWinSpy
-      Game.players[0].youLose = player1YouLoseSpy
-      Game.players[1].youWin = player2YouWinSpy
-      Game.players[1].youLose = player2YouLoseSpy
+      sinon.spy(Game.players[0], 'youWin')
+      sinon.spy(Game.players[0], 'youLose')
+      sinon.spy(Game.players[1], 'youWin')
+      sinon.spy(Game.players[1], 'youLose')
       Game.board.checkForWin = () => true // Game over
 
       Game.nextTurn()
-      sinon.assert.notCalled(player1YouWinSpy)
-      sinon.assert.calledOnce(player1YouLoseSpy)
-
-      sinon.assert.calledOnce(player2YouWinSpy)
-      sinon.assert.notCalled(player2YouLoseSpy)
+      sinon.assert.notCalled(Game.players[0].youWin)
+      sinon.assert.calledOnce(Game.players[0].youLose)
+      sinon.assert.calledOnce(Game.players[1].youWin)
+      sinon.assert.notCalled(Game.players[1].youLose)
     });
 
     it('should alert players on game tie', function() {
-      const player1YouTieSpy = sinon.spy()
-      const player2YouTieSpy = sinon.spy()
-      Game.players[0].youTie = player1YouTieSpy
-      Game.players[1].youTie = player2YouTieSpy
+      sinon.spy(Game.players[0], 'youTie')
+      sinon.spy(Game.players[1], 'youTie')
       Game.board.checkForTie = () => true // Game over
 
       Game.nextTurn()
-      sinon.assert.calledOnce(player1YouTieSpy)
-      sinon.assert.calledOnce(player2YouTieSpy)
+      sinon.assert.calledOnce(Game.players[0].youTie)
+      sinon.assert.calledOnce(Game.players[1].youTie)
     });
   });
 

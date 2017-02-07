@@ -6,12 +6,12 @@ import game from '../public/assets/javascript/game'
 describe('Game', function() {
 
   describe('human', function() {
-    let Player
+    let Player, Game
     const selectSquareSpy = sinon.spy()
 
     beforeEach(function() {
-      const Game = new game
-      Game.selectSquare = selectSquareSpy
+      Game = new game('human')
+      sinon.spy(Game, 'selectSquare')
       Player = new player({ symbol: 'o', type: 'human', game: Game })
     })
 
@@ -26,7 +26,7 @@ describe('Game', function() {
       assert(!Player.myTurn());
       Player.startTurn()
       assert(Player.myTurn());
-      sinon.assert.notCalled(selectSquareSpy)
+      sinon.assert.notCalled(Game.selectSquare)
     });
 
     it('should end a player turn', function() {
@@ -54,12 +54,11 @@ describe('Game', function() {
   });
 
   describe('random', function() {
-    let Player
-    const selectSquareSpy = sinon.spy()
+    let Player, Game
 
     beforeEach(function() {
-      const Game = new game
-      Game.selectSquare = selectSquareSpy
+      Game = new game('human')
+      sinon.spy(Game, 'selectSquare')
       Player = new player({ symbol: 'x', type: 'random', game: Game })
     })
 
@@ -74,7 +73,7 @@ describe('Game', function() {
       assert(!Player.myTurn());
       Player.startTurn()
       assert(Player.myTurn());
-      sinon.assert.calledOnce(selectSquareSpy)
+      sinon.assert.calledOnce(Game.selectSquare)
     });
   });
 
