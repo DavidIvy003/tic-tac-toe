@@ -1,11 +1,9 @@
-const assert = require('assert');
+import assert from 'assert'
+import { X, O, BLANK } from '../public/assets/javascript/config'
+import board from '../public/assets/javascript/board'
 
 describe('Board', function() {
-  const board = require('../public/assets/javascript/board')
   const Board = new board()
-  const X = 'X'
-  const O = 'O'
-  const BLANK = BLANK
 
   describe('checkForWin', function() {
     it('should correctly check top row', function() {
