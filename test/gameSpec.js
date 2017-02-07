@@ -1,6 +1,7 @@
 import assert from 'assert'
-import game from '../public/assets/javascript/game'
 import sinon from 'sinon'
+import game from '../public/assets/javascript/game'
+import { X, O, BLANK } from '../public/assets/javascript/config'
 
 describe('Game', function() {
   let Game
@@ -66,6 +67,17 @@ describe('Game', function() {
       assert.equal(Game.currentPlayerIndex, 1);
       Game.selectSquare(4);
       assert.equal(Game.currentPlayerIndex, 0);
+    });
+  });
+
+  describe('choiceOptions', function() {
+    it('should return options for an empty board', function() {
+      assert.deepEqual(Game.choiceOptions(), [0, 1, 2, 3, 4, 5, 6, 7, 8]);
+    });
+
+    it('should return options for a single option board', function() {
+      Game.board.state = [X, O, X, O, X, O, X, O, BLANK];
+      assert.deepEqual(Game.choiceOptions(), [8]);
     });
   });
 
