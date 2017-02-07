@@ -45,6 +45,9 @@ class Game {
   choiceOptions() {
     return this.board.state.map((a, i) => { if (!a) return i }).filter(Number)
   }
+  getBoardHistory() {
+    return this.board.stack
+  }
 }
 
 module.exports = Game

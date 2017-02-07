@@ -1,7 +1,9 @@
 import $ from 'jquery'
 import computer from './computer'
+import trainer from './trainer'
 
 const Computer = new computer()
+const Trainer = new trainer()
 
 class Player {
   constructor(opt) {
@@ -12,6 +14,7 @@ class Player {
     this.wins = 0
     this.loses = 0
     this.draws = 0
+    Computer.symbol = this.symbol
   }
   startTurn() {
     this.turn = true
@@ -25,6 +28,7 @@ class Player {
   }
   youWin() {
     this.wins++
+    Trainer.win(this.game.getBoardHistory(), Computer, this.symbol)
   }
   youLose() {
     this.loses++
