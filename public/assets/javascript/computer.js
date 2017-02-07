@@ -21,6 +21,10 @@ class Computer {
       return '2'
     }).join('') + choice
   }
+  getStateReward(state, choice) {
+    const stateKey = this.stringifyState(state, choice)
+    return stack[stateKey]
+  }
 }
 
 module.exports = Computer
