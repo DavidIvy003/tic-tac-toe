@@ -4,7 +4,10 @@ class Computer {
     this.stack = {}
   }
   move(state, options) {
-    return options[Math.floor(Math.random() * options.length)]
+    if (this.type === 'random') {
+      return options[Math.floor(Math.random() * options.length)]
+    }
+    return this.getBestOption(state, options)
   }
   reward(state, choice, points) {
     const stateKey = this.stringifyState(state, choice)
@@ -12,7 +15,19 @@ class Computer {
       this.stack[stateKey] = 0
     }
     this.stack[stateKey] += points
-    console.log(this.stack)
+  }
+  getScore(state, option) {
+    const score = this.stack[this.stringifyState(state, option)]
+    return score ? score : 0
+  }
+  getBestOption(state, options) {
+    const optionScores = options.map((option) => {
+      return {
+        option: option,
+        score: this.getScore(state, option)
+      }
+    })
+    return optionScores.sort((a, b) => b.score - a.score)[0].option
   }
   stringifyState(state, choice) {
     return state.map((symbol) => {
