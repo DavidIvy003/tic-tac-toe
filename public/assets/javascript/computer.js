@@ -42,4 +42,4 @@ class Computer {
   }
 }
 
-module.exports = Computer
+export default Computer

@@ -55,4 +55,4 @@ function _checkDiagonals(state) {
   }
 }
 
-module.exports = Board
+export default Board

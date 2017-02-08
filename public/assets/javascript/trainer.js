@@ -20,4 +20,4 @@ class Trainer {
   }
 }
 
-module.exports = Trainer
+export default Trainer
