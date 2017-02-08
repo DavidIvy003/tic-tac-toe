@@ -14,7 +14,12 @@ class Game {
     this.nextTurn()
   }
   reset() {
+    console.log(this.gamesPlayed)
     this.board.reset()
+  }
+  endTraining() {
+    this.players[1] = new Player({ symbol: 'o', type: 'human', game: this })
+    this.reset()
   }
   currentPlayer() {
     return this.players[this.currentPlayerIndex]
@@ -31,11 +36,13 @@ class Game {
       console.log('winner winner chicken dinner')
       this.currentPlayer().youWin()
       this.opposingPlayer().youLose()
+      this.gamesPlayed++
       this.reset()
     } else if (this.board.checkForTie()) {
       console.log("it's a pizza tie")
       this.currentPlayer().youTie()
       this.opposingPlayer().youTie()
+      this.gamesPlayed++
       this.reset()
     }
     setTimeout(this.nextPlayer.bind(this))

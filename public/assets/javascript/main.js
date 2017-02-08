@@ -3,9 +3,14 @@ import Game from './game'
 
 $(() => {
 
+  let game
   function toggleTraining() {
-    const game = new Game('computer', 'random')
+    game = new Game('computer', 'random')
   }
+
+  $(document).on('click', '.end-training', (event) => {
+    game.endTraining()
+  })
 
   toggleTraining()
 });
