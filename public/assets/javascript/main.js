@@ -4,7 +4,7 @@ import Game from './game'
 $(() => {
 
   function toggleTraining() {
-    const game = new Game('computer')
+    const game = new Game('computer', 'random')
   }
 
   toggleTraining()
