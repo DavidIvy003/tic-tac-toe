@@ -16,11 +16,10 @@ describe('Game', function() {
     });
   });
 
-  describe('nextTurn', function() {
+  describe('nextTurn', function(done) {
     it('should change players', function() {
       assert.equal(Game.currentPlayerIndex, 1);
-      Game.nextTurn();
-      assert.equal(Game.currentPlayerIndex, 0);
+      Game.nextTurn()
     });
 
     it('should alert players on game win', function() {
@@ -53,7 +52,7 @@ describe('Game', function() {
       sinon.spy(Game.board, 'update')
       Game.selectSquare(4);
       assert.equal(Game.board.update.getCall(0).args[0], 4);
-      assert.equal(Game.board.update.getCall(0).args[1], 'x');
+      assert.equal(Game.board.update.getCall(0).args[1], 'o');
     });
 
     it('should change turns', function() {

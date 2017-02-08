@@ -6,8 +6,8 @@ class Game {
     this.gamesPlayed = 0
     this.players = []
     this.board = new Board()
-    this.players.push(new Player({ symbol: 'o', type: player2Type, game: this }))
     this.players.push(new Player({ symbol: 'x', type: player1Type, game: this }))
+    this.players.push(new Player({ symbol: 'o', type: player2Type, game: this }))
 
     this.currentPlayerIndex = 0
 
@@ -45,12 +45,14 @@ class Game {
       this.gamesPlayed++
       this.reset()
     }
-    setTimeout(this.nextPlayer.bind(this))
+    this.nextPlayer()
   }
   nextPlayer() {
     this.currentPlayer().endTurn(this.board.state)
     this.currentPlayerIndex = this.opposingPlayerIndex()
-    this.currentPlayer().startTurn(this.board.state)
+    setTimeout(() => {
+      this.currentPlayer().startTurn(this.board.state)
+    })
   }
   selectSquare(position) {
     let nextTurn = this.board.update(position, this.currentPlayer().symbol)
