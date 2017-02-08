@@ -38,7 +38,7 @@ class Game {
       this.opposingPlayer().youTie()
       this.reset()
     }
-    this.nextPlayer()
+    setTimeout(this.nextPlayer.bind(this))
   }
   nextPlayer() {
     this.currentPlayer().endTurn(this.board.state)
