@@ -52,7 +52,7 @@ describe('Game', function() {
       sinon.spy(Game.board, 'update')
       Game.selectSquare(4);
       assert.equal(Game.board.update.getCall(0).args[0], 4);
-      assert.equal(Game.board.update.getCall(0).args[1], 'o');
+      assert.equal(Game.board.update.getCall(0).args[1], O);
     });
 
     it('should change turns', function() {

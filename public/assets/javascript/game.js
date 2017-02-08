@@ -1,13 +1,14 @@
 import Board from './board'
 import Player from './player'
+import { X, O, BLANK } from './config'
 
 class Game {
   constructor(player1Type = 'random', player2Type = 'human') {
     this.gamesPlayed = 0
     this.players = []
     this.board = new Board()
-    this.players.push(new Player({ symbol: 'x', type: player1Type, game: this }))
-    this.players.push(new Player({ symbol: 'o', type: player2Type, game: this }))
+    this.players.push(new Player({ symbol: X, type: player1Type, game: this }))
+    this.players.push(new Player({ symbol: O, type: player2Type, game: this }))
 
     this.currentPlayerIndex = 0
 
@@ -18,7 +19,7 @@ class Game {
     this.board.reset()
   }
   endTraining() {
-    this.players[1] = new Player({ symbol: 'o', type: 'human', game: this })
+    this.players[1] = new Player({ symbol: O, type: 'human', game: this })
     this.reset()
   }
   currentPlayer() {
