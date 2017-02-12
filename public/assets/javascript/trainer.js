@@ -6,18 +6,46 @@ class Trainer {
   constructor(opt) {
   }
   win(computer, history, computerSymbol) {
-    this.rewardComputer(computer, history, computerSymbol, WIN_POINTS)
+    rewardComputer(computer, history, computerSymbol, WIN_POINTS)
   }
   lose(computer, history, computerSymbol) {
-    this.rewardComputer(computer, history, computerSymbol, LOSE_POINTS)
+    rewardComputer(computer, history, computerSymbol, LOSE_POINTS)
   }
-  rewardComputer(computer, history, computerSymbol, points) {
-    history.forEach((event) => {
-      if (event.symbol === computerSymbol) {
-        computer.reward(event.state, event.choice, points)
+}
+
+function rotateIndex(a) {
+  const y = a % 3
+  const x = (a - y) / 3
+  let y1
+  if (x === 0) {
+    y1 = 2
+  } else if (x === 1) {
+    y1 = 1
+  } else {
+    y1 = 0
+  }
+  const x1 = y
+  return x1 * 3 + y1
+}
+
+function rewardComputer(computer, history, computerSymbol, points) {
+  let state
+  history.forEach((event) => {
+    if (event.symbol === computerSymbol) {
+      state = event.state
+      for (let i = 0; i < 4; i++) {
+        computer.reward(state, event.choice, points)
+        state = rotateBoard(state)
       }
-    })
-  }
+    }
+  })
+}
+
+function rotateBoard(state) {
+  return state.reduce((a, b, index) => {
+    a.push(b)
+    return a
+  }, [])
 }
 
 export default Trainer

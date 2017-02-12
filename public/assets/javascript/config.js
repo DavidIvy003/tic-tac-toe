@@ -1,3 +1,3 @@
 export const X = 'X'
 export const O = 'O'
-export const BLANK = BLANK
+export const BLANK = undefined
