@@ -23,17 +23,17 @@ describe('Trainer', () => {
     })
 
     it('should rotate the board to speed up learning', () => {
-      assert.deepEqual(stack[13].state, [ BLANK, BLANK, X,
+      assert.deepEqual(stack[13].state, [ O, BLANK, X,
                                           BLANK, O, O,
                                           X, BLANK, X ])
       assert.equal(stack[13].choice, 7  )
-      assert.deepEqual(stack[14].state, [ X, BLANK, BLANK,
+      assert.deepEqual(stack[14].state, [ X, BLANK, O,
                                           BLANK, O, BLANK,
                                           X, O, X ])
       assert.equal(stack[14].choice, 3)
       assert.deepEqual(stack[15].state, [ X, BLANK, X,
                                           O, O, BLANK,
-                                          X, BLANK, BLANK ])
+                                          X, BLANK, O ])
       assert.equal(stack[15].choice, 1)
     })
   })

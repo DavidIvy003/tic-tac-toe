@@ -33,13 +33,13 @@ export default [{
 }, {
   state: [X, BLANK, X,
           BLANK, O, BLANK,
-          BLANK, BLANK, X],
+          O, BLANK, X],
   choice: 1,
   symbol: O
 }, {
   state: [X, O, X,
           BLANK, O, BLANK,
-          BLANK, BLANK, X],
+          O, BLANK, X],
   choice: 5, // Winning choice
   symbol: X
 }]
