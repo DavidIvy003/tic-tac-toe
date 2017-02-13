@@ -5,7 +5,7 @@ $(() => {
 
   let game
   function toggleTraining() {
-    game = new Game('computer', 'random')
+    game = new Game('computer', 'computer')
   }
 
   $(document).on('click', '.end-training', (event) => {
