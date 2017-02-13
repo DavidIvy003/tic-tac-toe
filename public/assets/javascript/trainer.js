@@ -42,10 +42,11 @@ function rewardComputer(computer, history, computerSymbol, points) {
 }
 
 function rotateBoard(state) {
-  return state.reduce((a, b, index) => {
-    a.push(b)
-    return a
-  }, [])
+  let rotatedBoard = []
+  state.forEach((pos, index) => {
+    rotatedBoard[rotateIndex(index)] = pos
+  })
+  return rotatedBoard
 }
 
 export default Trainer
