@@ -12,5 +12,9 @@ $(() => {
     game.endTraining()
   })
 
+  $(document).on('click', '.continue-training', (event) => {
+    game.continueTraining()
+  })
+
   toggleTraining()
 });

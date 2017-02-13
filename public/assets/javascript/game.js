@@ -19,8 +19,14 @@ class Game {
     this.board.reset()
   }
   endTraining() {
+    this.computerPlayer = this.players[1]
     this.players[1] = new Player({ symbol: O, type: 'human', game: this })
     this.reset()
+  }
+  continueTraining() {
+    this.players[1] = this.computerPlayer
+    this.reset()
+    this.nextTurn()
   }
   currentPlayer() {
     return this.players[this.currentPlayerIndex]
@@ -60,7 +66,7 @@ class Game {
     if (nextTurn) this.nextTurn()
   }
   choiceOptions() {
-    return this.board.state.map((a, i) => { if (!a) return i }).filter((a) => a !== undefined)
+    return this.board.state.map((a, i) => { if (!a) return i }).filter((a) => a !== BLANK)
   }
   getBoardHistory() {
     return this.board.stack
