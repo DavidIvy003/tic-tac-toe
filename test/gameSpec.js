@@ -3,26 +3,26 @@ import sinon from 'sinon'
 import game from '../public/assets/javascript/game'
 import { X, O, BLANK } from '../public/assets/javascript/config'
 
-describe('Game', function() {
+describe('Game', () => {
   let Game
   beforeEach(() => {
     Game = new game('human')
   })
 
-  describe('players', function() {
-    it('should create two players', function() {
+  describe('players', () => {
+    it('should create two players', () => {
       assert.equal(Game.players.length, 2);
       assert.equal(Game.currentPlayerIndex, 1);
     });
   });
 
   describe('nextTurn', function(done) {
-    it('should change players', function() {
+    it('should change players', () => {
       assert.equal(Game.currentPlayerIndex, 1);
       Game.nextTurn()
     });
 
-    it('should alert players on game win', function() {
+    it('should alert players on game win', () => {
       sinon.spy(Game.players[0], 'youWin')
       sinon.spy(Game.players[0], 'youLose')
       sinon.spy(Game.players[1], 'youWin')
@@ -36,7 +36,7 @@ describe('Game', function() {
       sinon.assert.notCalled(Game.players[1].youLose)
     });
 
-    it('should alert players on game tie', function() {
+    it('should alert players on game tie', () => {
       sinon.spy(Game.players[0], 'youTie')
       sinon.spy(Game.players[1], 'youTie')
       Game.board.checkForTie = () => true // Game over
@@ -47,27 +47,27 @@ describe('Game', function() {
     });
   });
 
-  describe('selectSquare', function() {
-    it('should update the board', function() {
+  describe('selectSquare', () => {
+    it('should update the board', () => {
       sinon.spy(Game.board, 'update')
       Game.selectSquare(4);
       assert.equal(Game.board.update.getCall(0).args[0], 4);
       assert.equal(Game.board.update.getCall(0).args[1], O);
     });
 
-    it('should change turns', function() {
+    it('should change turns', () => {
       assert.equal(Game.currentPlayerIndex, 1);
       Game.selectSquare(4);
       assert.equal(Game.currentPlayerIndex, 0);
     });
   });
 
-  describe('choiceOptions', function() {
-    it('should return options for an empty board', function() {
+  describe('choiceOptions', () => {
+    it('should return options for an empty board', () => {
       assert.deepEqual(Game.choiceOptions(), [0, 1, 2, 3, 4, 5, 6, 7, 8]);
     });
 
-    it('should return options for a single option board', function() {
+    it('should return options for a single option board', () => {
       Game.board.state = [X, O, X, O, X, O, X, O, BLANK];
       assert.deepEqual(Game.choiceOptions(), [8]);
     });
