@@ -27,7 +27,10 @@ class Computer {
         score: this.getScore(state, option)
       }
     })
-    return optionScores.sort((a, b) => b.score - a.score)[0].option
+    const topChoice = optionScores.sort((a, b) => b.score - a.score)[0]
+    const choices = optionScores.filter((option) => option.score === topChoice.score)
+    const choice = choices[Math.floor(Math.random() * choices.length)]
+    return choice.option
   }
   stringifyState(state, choice) {
     return state.map((symbol) => {
