@@ -29,13 +29,15 @@ function rotateIndex(a) {
 }
 
 function rewardComputer(computer, history, computerSymbol, points) {
-  let state
+  let state, choice
   history.forEach((event) => {
     if (event.symbol === computerSymbol) {
       state = event.state
+      choice = event.choice
       for (let i = 0; i < 4; i++) {
-        computer.reward(state, event.choice, points)
+        computer.reward(state, choice, points)
         state = rotateBoard(state)
+        choice = rotateIndex(choice)
       }
     }
   })

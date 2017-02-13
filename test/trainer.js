@@ -26,12 +26,15 @@ describe('Trainer', function() {
       assert.deepEqual(stack[13].state, [ BLANK, BLANK, X,
                                           BLANK, O, O,
                                           X, BLANK, X ]);
+      assert.equal(stack[13].choice, 7  );
       assert.deepEqual(stack[14].state, [ X, BLANK, BLANK,
                                           BLANK, O, BLANK,
                                           X, O, X ]);
+      assert.equal(stack[14].choice, 3);
       assert.deepEqual(stack[15].state, [ X, BLANK, X,
                                           O, O, BLANK,
                                           X, BLANK, BLANK ]);
+      assert.equal(stack[15].choice, 1);
     })
   });
 
