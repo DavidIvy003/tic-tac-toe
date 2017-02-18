@@ -1,6 +1,6 @@
 const WIN_POINTS = 10
 const LOSE_POINTS = -10
-const TIE_POINTS = 0
+const TIE_POINTS = -1
 
 class Trainer {
   constructor(opt) {
@@ -10,6 +10,9 @@ class Trainer {
   }
   lose(computer, history, computerSymbol) {
     rewardComputer(computer, history, computerSymbol, LOSE_POINTS)
+  }
+  tie(computer, history, computerSymbol) {
+    rewardComputer(computer, history, computerSymbol, TIE_POINTS)
   }
 }
 

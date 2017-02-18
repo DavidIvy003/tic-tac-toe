@@ -35,6 +35,7 @@ class Player {
   }
   youTie() {
     this.draws++
+    Trainer.tie(this.computer, this.game.getBoardHistory(), this.symbol)
   }
   makeMove(state) {
     if (this.type === 'human') return
