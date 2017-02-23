@@ -13,7 +13,7 @@ class Player {
     this.wins = 0
     this.loses = 0
     this.draws = 0
-    this.computer = new Computer({ symbol: this.symbol, type: this.type })
+    this.computer = new Computer({ type: this.type })
   }
   startTurn(state) {
     this.turn = true

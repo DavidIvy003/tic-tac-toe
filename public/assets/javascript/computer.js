@@ -1,6 +1,5 @@
 class Computer {
   constructor(opt) {
-    this.symbol = opt.symbol
     this.type = opt.type
     this.stack = {}
     this.certainty = 0
