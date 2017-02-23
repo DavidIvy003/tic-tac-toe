@@ -3,6 +3,7 @@ class Computer {
     this.symbol = opt.symbol
     this.type = opt.type
     this.stack = {}
+    this.certainty = 0
   }
   move(state, options) {
     if (this.type === 'random') {
@@ -29,7 +30,10 @@ class Computer {
       }
     })
     const topChoice = optionScores.sort((a, b) => b.score - a.score)[0]
-    const choices = optionScores.filter((option) => option.score === topChoice.score)
+    let choices = optionScores.filter((option) => option.score === topChoice.score)
+    if (Math.random() * this.certainty < 1) {
+      choices = optionScores
+    }
     const choice = choices[Math.floor(Math.random() * choices.length)]
     return choice.option
   }

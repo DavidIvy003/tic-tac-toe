@@ -27,6 +27,8 @@ class Player {
   }
   youWin() {
     this.wins++
+    console.log(`${this.symbol} wins: ${this.wins}`)
+    this.computer.certainty = this.wins / 100
     Trainer.win(this.computer, this.game.getBoardHistory(), this.symbol)
   }
   youLose() {
