@@ -1,3 +1,5 @@
+import { X, O, BLANK } from './config'
+
 const WIN_POINTS = 10
 const LOSE_POINTS = -10
 const TIE_POINTS = -1
@@ -12,7 +14,7 @@ class Trainer {
     rewardComputer(computer, history, computerSymbol, LOSE_POINTS)
   }
   tie(computer, history, computerSymbol) {
-    rewardComputer(computer, history, computerSymbol, TIE_POINTS)
+    // rewardComputer(computer, history, computerSymbol, TIE_POINTS)
   }
 }
 
@@ -32,16 +34,29 @@ function rotateIndex(a) {
 }
 
 function rewardComputer(computer, history, computerSymbol, points) {
-  let state, choice
+  let state, choice, turn = 0
   history.forEach((event) => {
     if (event.symbol === computerSymbol) {
       state = event.state
-      choice = event.choice
-      for (let i = 0; i < 4; i++) {
-        computer.reward(state, choice, points)
-        state = rotateBoard(state)
-        choice = rotateIndex(choice)
-      }
+    } else {
+      state = reverseBoard(event.state)
+      points = -points
+    }
+    choice = event.choice
+    const score = points > 0 ? points - turn : points + turn
+    for (let i = 0; i < 4; i++) {
+      computer.reward(state, choice, score)
+      state = rotateBoard(state)
+      choice = rotateIndex(choice)
+    }
+    turn ++
+  })
+}
+
+function reverseBoard(state) {
+  return state.map(pos => {
+    if (pos) {
+      return pos === X ? O : X
     }
   })
 }
