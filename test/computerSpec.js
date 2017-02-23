@@ -6,6 +6,7 @@ describe('Computer', () => {
   let Computer
   beforeEach(() => {
     Computer = new computer({ type: 'computer', symbol: X })
+    Computer.certainty = Infinity
   })
 
   describe('reward', () => {
