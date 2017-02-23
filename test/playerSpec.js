@@ -3,7 +3,7 @@ import sinon from 'sinon'
 import player from '../public/assets/javascript/player'
 import game from '../public/assets/javascript/game'
 
-describe('Game', () => {
+describe('Player', () => {
 
   describe('human', () => {
     let Player, Game

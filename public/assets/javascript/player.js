@@ -15,7 +15,7 @@ class Player {
     this.draws = 0
     this.computer = new Computer({ type: this.type })
   }
-  startTurn(state) {
+  startTurn(state = []) {
     this.turn = true
     this.makeMove(state)
   }
