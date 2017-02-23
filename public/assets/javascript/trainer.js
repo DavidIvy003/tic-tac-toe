@@ -44,14 +44,15 @@ function rotateIndex(a) {
   return x1 * 3 + y1
 }
 
-function rewardComputer(computer, history, computerSymbol, points) {
-  let state, choice, turn = 0
+function rewardComputer(computer, history, computerSymbol, rewardPoints) {
+  let state, choice, points, turn = 0
   history.forEach((event) => {
     if (event.symbol === computerSymbol) {
       state = event.state
+      points = rewardPoints
     } else {
       state = reverseBoard(event.state)
-      points = -points
+      points = -rewardPoints
     }
     choice = event.choice
     const score = points > 0 ? points - turn : points + turn
