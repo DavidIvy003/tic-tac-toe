@@ -19,29 +19,47 @@ describe('Trainer', () => {
     })
 
     it('should update computer state', () => {
-      assert.equal(stack.length, 16)
+      assert.equal(stack.length, 28)
     })
 
     it('should rotate the board to speed up learning', () => {
-      assert.deepEqual(stack[13].state, [ O, BLANK, X,
+      assert.deepEqual(stack[25].state, [ O, BLANK, X,
                                           BLANK, O, O,
                                           X, BLANK, X ])
-      assert.equal(stack[13].choice, 7  )
-      assert.deepEqual(stack[14].state, [ X, BLANK, O,
+      assert.equal(stack[25].choice, 7  )
+      assert.deepEqual(stack[26].state, [ X, BLANK, O,
                                           BLANK, O, BLANK,
                                           X, O, X ])
-      assert.equal(stack[14].choice, 3)
-      assert.deepEqual(stack[15].state, [ X, BLANK, X,
+      assert.equal(stack[26].choice, 3)
+      assert.deepEqual(stack[27].state, [ X, BLANK, X,
                                           O, O, BLANK,
                                           X, BLANK, O ])
-      assert.equal(stack[15].choice, 1)
+      assert.equal(stack[27].choice, 1)
     })
   })
 
   describe('lose', () => {
-    it('should update computer state', () => {
+    beforeEach(() => {
       Trainer.lose(Computer, history, O)
-      assert.equal(stack.length, 12)
+    })
+
+    it('should update computer state', () => {
+      assert.equal(stack.length, 28)
+    })
+
+    it('should flip the board to speed up learning', () => {
+      assert.deepEqual(stack[25].state, [ X, BLANK, O,
+                                          BLANK, X, X,
+                                          O, BLANK, O ])
+      assert.equal(stack[25].choice, 7)
+      assert.deepEqual(stack[26].state, [ O, BLANK, X,
+                                          BLANK, X, BLANK,
+                                          O, X, O ])
+      assert.equal(stack[26].choice, 3)
+      assert.deepEqual(stack[27].state, [ O, BLANK, O,
+                                          X, X, BLANK,
+                                          O, BLANK, X ])
+      assert.equal(stack[27].choice, 1)
     })
   })
 
