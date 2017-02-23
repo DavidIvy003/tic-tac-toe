@@ -16,6 +16,17 @@ class Trainer {
   tie(computer, history, computerSymbol) {
     // rewardComputer(computer, history, computerSymbol, TIE_POINTS)
   }
+  hashState(state, computerSymbol) {
+    return stringifyState(state, computerSymbol)
+  }
+}
+
+function stringifyState(state, computerSymbol) {
+  return state.map((symbol) => {
+    if (!symbol) return '0'
+    if (symbol === computerSymbol) return '1'
+    return '2'
+  }).join('')
 }
 
 function rotateIndex(a) {
@@ -45,7 +56,7 @@ function rewardComputer(computer, history, computerSymbol, points) {
     choice = event.choice
     const score = points > 0 ? points - turn : points + turn
     for (let i = 0; i < 4; i++) {
-      computer.reward(state, choice, score)
+      computer.reward(stringifyState(state, computerSymbol), choice, score)
       state = rotateBoard(state)
       choice = rotateIndex(choice)
     }

@@ -12,14 +12,14 @@ class Computer {
     return this.getBestOption(state, options)
   }
   reward(state, choice, points) {
-    const stateKey = this.stringifyState(state, choice)
+    const stateKey = state + choice
     if (!this.stack[stateKey]) {
       this.stack[stateKey] = 0
     }
     this.stack[stateKey] += points
   }
   getScore(state, option) {
-    const score = this.stack[this.stringifyState(state, option)]
+    const score = this.stack[state + option]
     return score ? score : 0
   }
   getBestOption(state, options) {
@@ -37,15 +37,8 @@ class Computer {
     const choice = choices[Math.floor(Math.random() * choices.length)]
     return choice.option
   }
-  stringifyState(state, choice) {
-    return state.map((symbol) => {
-      if (!symbol) return '0'
-      if (symbol === this.symbol) return '1'
-      return '2'
-    }).join('') + choice
-  }
   getStateReward(state, choice) {
-    const stateKey = this.stringifyState(state, choice)
+    const stateKey = state + choice
     return this.stack[stateKey]
   }
 }

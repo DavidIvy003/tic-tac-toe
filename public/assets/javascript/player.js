@@ -42,7 +42,7 @@ class Player {
   makeMove(state) {
     if (this.type === 'human') return
     let options = this.game.choiceOptions()
-    let choice = this.computer.move(state, options)
+    let choice = this.computer.move(Trainer.hashState(state, this.symbol), options)
     this.game.selectSquare(choice)
   }
   bindEvents() {
