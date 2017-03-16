@@ -4,17 +4,25 @@ import Game from './game'
 $(() => {
 
   let game
-  function toggleTraining() {
+  let $endTrainingButton = $(document).find('.end-training')
+  let $startTrainingButton = $(document).find('.continue-training')
+
+  function createGame() {
     game = new Game('computer', 'computer')
+    $startTrainingButton.hide()
   }
 
-  $(document).on('click', '.end-training', (event) => {
+  $endTrainingButton.click((event) => {
     game.endTraining()
+    $endTrainingButton.hide()
+    $startTrainingButton.show()
   })
 
-  $(document).on('click', '.continue-training', (event) => {
+  $startTrainingButton.click((event) => {
     game.continueTraining()
+    $endTrainingButton.show()
+    $startTrainingButton.hide()
   })
 
-  toggleTraining()
+  createGame()
 });
