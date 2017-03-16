@@ -1,3 +1,4 @@
+import $ from 'jquery'
 import Board from './board'
 import Player from './player'
 import { X, O, BLANK } from './config'
@@ -45,6 +46,7 @@ class Game {
       this.opposingPlayer().youLose()
       this.gamesPlayed++
       this.reset()
+      this.updateStats()
     } else if (this.board.checkForTie()) {
       console.log("it's a pizza tie")
       this.currentPlayer().youTie()
@@ -70,6 +72,12 @@ class Game {
   }
   getBoardHistory() {
     return this.board.stack
+  }
+  updateStats() {
+    let computer = this.players[0]
+    $('.stats .games-played').html(this.gamesPlayed)
+    $('.stats .computer-wins').html(computer.wins)
+    $('.stats .computer-loses').html(computer.loses)
   }
 }
 
