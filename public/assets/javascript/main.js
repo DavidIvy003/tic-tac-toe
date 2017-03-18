@@ -6,6 +6,7 @@ $(() => {
   let game
   let $endTrainingButton = $(document).find('.end-training')
   let $startTrainingButton = $(document).find('.continue-training')
+  let $debugButton = $(document).find('.debug')
 
   function createGame() {
     game = new Game('computer', 'computer')
@@ -22,6 +23,10 @@ $(() => {
     game.continueTraining()
     $endTrainingButton.show()
     $startTrainingButton.hide()
+  })
+
+  $debugButton.click((event) => {
+    game.debug()
   })
 
   createGame()

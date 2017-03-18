@@ -39,6 +39,9 @@ class Player {
     this.draws++
     Trainer.tie(this.computer, this.game.getBoardHistory(), this.symbol)
   }
+  debug() {
+    this.computer.debug()
+  }
   makeMove(state) {
     if (this.type === 'human') return
     let options = this.game.choiceOptions()

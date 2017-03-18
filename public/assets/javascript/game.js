@@ -73,6 +73,10 @@ class Game {
   getBoardHistory() {
     return this.board.stack
   }
+  debug() {
+    let computer = this.players[0]
+    computer.debug()
+  }
   updateStats() {
     let computer = this.players[0]
     $('.stats .games-played').html(this.gamesPlayed)

@@ -3,6 +3,7 @@ class Computer {
     this.type = opt.type
     this.stack = {}
     this.certainty = 0
+    this.inDebugMode = false
   }
   move(state, options) {
     if (this.type === 'random') {
@@ -17,6 +18,9 @@ class Computer {
     }
     this.stack[stateKey] += points
   }
+  debug() {
+    this.inDebugMode = !this.inDebugMode
+  }
   getScore(state, option) {
     const score = this.stack[state + option]
     return score ? score : 0
@@ -30,10 +34,14 @@ class Computer {
     })
     const topChoice = optionScores.sort((a, b) => b.score - a.score)[0]
     let choices = optionScores.filter((option) => option.score === topChoice.score)
-    if (Math.random() * this.certainty < 1) {
+    if (this.certainty < 30 && Math.random() * this.certainty < 1) {
       choices = optionScores
+      console.log(`picked random: ${this.certainty}`)
     }
     const choice = choices[Math.floor(Math.random() * choices.length)]
+    if (this.inDebugMode) {
+      debugger
+    }
     return choice.option
   }
   getStateReward(state, choice) {
