@@ -9,6 +9,7 @@ class Player {
     this.symbol = opt.symbol
     this.game = opt.game
     this.type = opt.type
+    this.certaintyRate = opt.intelligence === 'high' ? 50 : 100
     this.bindEvents()
     this.wins = 0
     this.loses = 0
@@ -28,7 +29,7 @@ class Player {
   youWin() {
     this.wins++
     console.log(`${this.symbol} wins: ${this.wins}`)
-    this.computer.certainty = this.wins / 50
+    this.computer.certainty = this.wins / this.certaintyRate
     Trainer.win(this.computer, this.game.getBoardHistory(), this.symbol)
   }
   youLose() {

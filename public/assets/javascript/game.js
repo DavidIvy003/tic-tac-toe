@@ -8,8 +8,8 @@ class Game {
     this.gamesPlayed = 0
     this.players = []
     this.board = new Board()
-    this.players.push(new Player({ symbol: X, type: player1Type, game: this }))
-    this.players.push(new Player({ symbol: O, type: player2Type, game: this }))
+    this.players.push(new Player({ symbol: X, type: player1Type, game: this, intelligence: 'high' }))
+    this.players.push(new Player({ symbol: O, type: player2Type, game: this, intelligence: 'low' }))
 
     this.currentPlayerIndex = 0
 
