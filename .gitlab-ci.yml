@@ -26,9 +26,6 @@ deploy:
   script:
     - echo "Building"
     - npm run build
-    - mkdir .public
-    - cp -r * .public
-    - mv .public public
   artifacts:
     paths:
     - public
