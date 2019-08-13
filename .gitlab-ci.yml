@@ -21,9 +21,11 @@ build:
     - echo "Building"
     - npm run build
 
-pages:
+deploy:
   stage: deploy
   script:
+    - echo "Building"
+    - npm run build
     - mkdir .public
     - cp -r * .public
     - mv .public public
