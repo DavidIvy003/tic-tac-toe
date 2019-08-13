@@ -8,3 +8,6 @@ before_script:
 test:
   script:
     - npm test
+
+include:
+  template: Dependency-Scanning.gitlab-ci.yml
