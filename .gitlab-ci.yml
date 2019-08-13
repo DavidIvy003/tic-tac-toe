@@ -1,13 +1,37 @@
 image: "node:8.16.0-alpine"
 
+stages:
+  - test
+  - build
+  - deploy
+
 before_script:
   - node -v
   - which node
   - npm install
 
 test:
+  stage: test
   script:
     - npm test
+
+build:
+  stage: build
+  script:
+    - echo "Building"
+    - npm run build
+
+pages:
+  stage: deploy
+  script:
+    - mkdir .public
+    - cp -r * .public
+    - mv .public public
+  artifacts:
+    paths:
+    - public
+  only:
+  - master
 
 include:
   template: Dependency-Scanning.gitlab-ci.yml
