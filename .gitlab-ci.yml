@@ -1,0 +1,10 @@
+image: "node:8.16.0-alpine"
+
+before_script:
+  - node -v
+  - which node
+  - npm install
+
+test:
+  script:
+    - npm test
