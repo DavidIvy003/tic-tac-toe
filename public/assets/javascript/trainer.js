@@ -2,7 +2,7 @@ import { X, O, BLANK } from './config'
 
 const WIN_POINTS = 10
 const LOSE_POINTS = -10
-const TIE_POINTS = -1
+const TIE_POINTS = 5
 
 class Trainer {
   constructor(opt) {
@@ -14,7 +14,7 @@ class Trainer {
     rewardComputer(computer, history, computerSymbol, LOSE_POINTS)
   }
   tie(computer, history, computerSymbol) {
-    // rewardComputer(computer, history, computerSymbol, TIE_POINTS)
+    rewardComputer(computer, history, computerSymbol, TIE_POINTS)
   }
   hashState(state, computerSymbol) {
     return stringifyState(state, computerSymbol)
@@ -46,7 +46,7 @@ function rotateIndex(a) {
 
 function rewardComputer(computer, history, computerSymbol, rewardPoints) {
   let state, choice, points, turn = 0
-  history.forEach((event) => {
+  history.reverse().forEach((event) => {
     if (event.symbol === computerSymbol) {
       state = event.state
       points = rewardPoints

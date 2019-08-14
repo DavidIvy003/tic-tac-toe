@@ -76,12 +76,14 @@ class Game {
   debug() {
     let computer = this.players[0]
     computer.debug()
+    $('.debug-stats').toggle()
   }
   updateStats() {
-    let computer = this.players[0]
+    let computerPlayer = this.players[0]
     $('.stats .games-played').html(this.gamesPlayed)
-    $('.stats .computer-wins').html(computer.wins)
-    $('.stats .computer-loses').html(computer.loses)
+    $('.stats .computer-wins').html(computerPlayer.wins)
+    $('.stats .computer-loses').html(computerPlayer.loses)
+    $('.stats .computer-certainty').html(computerPlayer.computer.certainty)
   }
 }
 
