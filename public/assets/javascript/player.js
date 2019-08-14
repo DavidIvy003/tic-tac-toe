@@ -29,7 +29,7 @@ class Player {
   youWin() {
     this.wins++
     console.log(`${this.symbol} wins: ${this.wins}`)
-    this.computer.certainty = this.wins / this.certaintyRate
+    this.computer.setCertainty(this.wins, this.certaintyRate)
     Trainer.win(this.computer, this.game.getBoardHistory(), this.symbol)
   }
   youLose() {
@@ -42,6 +42,12 @@ class Player {
   }
   debug() {
     this.computer.debug()
+  }
+  useTrainedDataset() {
+    this.computer.useTrainedDataset()
+  }
+  useUntrainedDataset() {
+    this.computer.useUntrainedDataset()
   }
   makeMove(state) {
     if (this.type === 'human') return

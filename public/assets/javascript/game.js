@@ -53,6 +53,7 @@ class Game {
       this.opposingPlayer().youTie()
       this.gamesPlayed++
       this.reset()
+      this.updateStats()
     }
     this.nextPlayer()
   }
@@ -77,6 +78,12 @@ class Game {
     let computer = this.players[0]
     computer.debug()
     $('.debug-stats').toggle()
+  }
+  useTrainedDataset() {
+    this.players.forEach(player => player.useTrainedDataset())
+  }
+  useUntrainedDataset() {
+    this.players.forEach(player => player.useUntrainedDataset())
   }
   updateStats() {
     let computerPlayer = this.players[0]

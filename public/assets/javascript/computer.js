@@ -38,6 +38,14 @@ class Computer {
     const certainty = wins / certaintyRate
     this.certainty = certainty > this.certainty ? certainty : this.certainty
   }
+  useTrainedDataset() {
+    this.stack = state
+    this.certainty = 30
+  }
+  useUntrainedDataset() {
+    this.stack = {}
+    this.certainty = 0
+  }
   debug() {
     this.inDebugMode = !this.inDebugMode
   }
