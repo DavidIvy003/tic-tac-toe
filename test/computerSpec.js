@@ -24,24 +24,36 @@ describe('Computer', () => {
                      BLANK, O, X]
       Computer.reward(state, 8, 10)
       Computer.reward(state, 8, -20)
-      assert.equal(Computer.getStateReward(state, 8), -10)
+      assert.equal(Computer.getStateReward(state, 8), -5)
     })
   })
 
   describe('move', () => {
     it('can pick the best finishing move', () => {
-      const state = [X, O, X,
-                     BLANK, O, BLANK,
+      const state = [BLANK, O, X,
+                     BLANK, BLANK, BLANK,
                      BLANK, O, X]
-      Computer.reward(state, 8, 10)
-      assert.equal(Computer.move(state, [3, 5, 6, 8]), 8)
+      Computer.reward(state, 0, -10)
+      Computer.reward(state, 3, -10)
+      Computer.reward(state, 4, -10)
+      Computer.reward(state, 5, 10)
+      Computer.reward(state, 6, -10)
+      assert.equal(Computer.move(state, [0, 3, 4, 5, 6]), 5)
     })
 
     it('can pick the best initial move', () => {
       const state = [BLANK, BLANK, BLANK,
                      BLANK, BLANK, BLANK,
                      BLANK, BLANK, BLANK]
+      Computer.reward(state, 0, -10)
+      Computer.reward(state, 1, -10)
+      Computer.reward(state, 2, -10)
+      Computer.reward(state, 3, -10)
       Computer.reward(state, 4, 10)
+      Computer.reward(state, 5, -10)
+      Computer.reward(state, 6, -10)
+      Computer.reward(state, 7, -10)
+      Computer.reward(state, 8, -10)
       assert.equal(Computer.move(state, [0, 1, 2, 3, 4, 5, 6, 7, 8]), 4)
     })
   })

@@ -88,6 +88,9 @@ class Computer {
     }
     return choice.option
   }
+  getStateReward(state, choice) {
+    return this.stack[state]['options'][choice]['average']
+  }
 }
 
 export default Computer
