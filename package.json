@@ -7,7 +7,8 @@
     "test": "mocha --require ./test/testHelper.js"
   },
   "dependencies": {
-    "jquery": "^2.1.4"
+    "jquery": "^2.1.4",
+    "materialize-css": "^1.0.0-rc.2"
   },
   "devDependencies": {
     "babel-eslint": "^5.0.0-beta6",

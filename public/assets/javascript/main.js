@@ -5,32 +5,46 @@ $(() => {
 
   let game
   let $endTrainingButton = $(document).find('.end-training')
-  let $startTrainingButton = $(document).find('.continue-training')
+  let $startTrainingButton = $(document).find('.start-training')
+  let $continueTrainingButton = $(document).find('.continue-training')
   let $debugButton = $(document).find('.debug')
   let $useTrainedDatasetButton = $(document).find('.use-trained-dataset')
   let $useUntrainedDatasetButton = $(document).find('.use-untrained-dataset')
+  let $welcomeCard = $(document).find('.welcome-card')
+  let $trainingCard = $(document).find('.training-card')
+  let $debuggerCard = $(document).find('.debugger-card')
+  let $statsCard = $(document).find('.stats-card')
 
   function createGame() {
     game = new Game('computer', 'computer')
-    $startTrainingButton.hide()
+    game.endTraining()
     $useUntrainedDatasetButton.hide()
   }
+
+  $startTrainingButton.click((event) => {
+    game.continueTraining()
+    $welcomeCard.hide()
+    $trainingCard.show()
+    $debuggerCard.show()
+    $continueTrainingButton.hide()
+  })
 
   $endTrainingButton.click((event) => {
     game.endTraining()
     $endTrainingButton.hide()
-    $startTrainingButton.show()
+    $continueTrainingButton.show()
   })
 
-  $startTrainingButton.click((event) => {
+  $continueTrainingButton.click((event) => {
     game.continueTraining()
     $endTrainingButton.show()
-    $startTrainingButton.hide()
+    $continueTrainingButton.hide()
   })
 
   $useTrainedDatasetButton.click((event) => {
     game.useTrainedDataset()
     $useUntrainedDatasetButton.show()
+    $statsCard.hide()
     $useTrainedDatasetButton.hide()
   })
 

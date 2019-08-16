@@ -3,40 +3,68 @@
 <head>
   <title>Tic Tac Toe</title>
 
+  <link href='https://fonts.googleapis.com/icon?family=Material+Icons' rel='stylesheet'>
   <link rel='stylesheet' href='assets/stylesheets/main.css'>
 </head>
-<body>
+<body class='teal'>
   <div class='container'>
     <h1>Tic-Tac-Toe</h1>
 
-    <div class='squares'>
-      <div class='square' data-choice='0'></div>
-      <div class='square' data-choice='1'></div>
-      <div class='square' data-choice='2'></div>
-      <div class='square' data-choice='3'></div>
-      <div class='square' data-choice='4'></div>
-      <div class='square' data-choice='5'></div>
-      <div class='square' data-choice='6'></div>
-      <div class='square' data-choice='7'></div>
-      <div class='square' data-choice='8'></div>
-    </div>
+    <div class='row'>
+      <div class='col s6'>
+        <div class='squares'>
+          <div class='square' data-choice='0'></div>
+          <div class='square' data-choice='1'></div>
+          <div class='square' data-choice='2'></div>
+          <div class='square' data-choice='3'></div>
+          <div class='square' data-choice='4'></div>
+          <div class='square' data-choice='5'></div>
+          <div class='square' data-choice='6'></div>
+          <div class='square' data-choice='7'></div>
+          <div class='square' data-choice='8'></div>
+        </div>
+      </div>
 
-    <div class='stats'>
-      <div> Games Player: <span class='games-played'></span></div>
-      <div> Computer Wins: <span class='computer-wins'></span></div>
-      <div> Computer Loses: <span class='computer-loses'></span></div>
-      <div> Computer Certainty: <span class='computer-certainty'></span></div>
-    </div>
-    <button class='end-training'>End Training</button>
-    <button class='continue-training'>Continue Training</button>
-    <button class='debug'>Debug</button>
-    <button class='use-trained-dataset'>Use Trained Dataset</button>
-    <button class='use-untrained-dataset'>Use Untrained Dataset</button>
-    <div class='debug-stats' style='display:none;'>
-      <div> State: <span class='debug-state'></span></div>
-      <div> Times Seen: <span class='debug-timesseen'></span></div>
-      <div> <span class='debug-random'></span></div>
-      <div> Stack: <ul class='debug-stack'></ul></div>
+      <div class='col s6'>
+        <div class='card stats-card'>
+          <div class='card-content'>
+            <div class='welcome-card'>
+              Welcome to Ai Tic Tac Toe. This is a version of Tic Tac Toe where the computer uses reinforcement learning to improve outcome. The motivation
+              behind this project is to better understand reinforcement learning and the pros and cons of this type of machine
+              learning.
+
+              <div class='spacer'>
+                <button class='start-training waves-effect waves-light btn'>Start Training</button>
+                <button class='use-trained-dataset waves-effect waves-light btn'>Use Trained Dataset</button>
+              </div>
+            </div>
+            <div class='training-card' style='display:none'>
+              <div class='stats'>
+                <div> Train until Certainty is 100%. </div>
+                <div class='spacer'> Games Player: <span class='games-played'></span></div>
+                <div> Computer Wins: <span class='computer-wins'></span></div>
+                <div> Computer Loses: <span class='computer-loses'></span></div>
+                <div> Computer Certainty: <span class='computer-certainty'></span>%</div>
+              </div>
+              <div class='spacer'>
+                <button class='end-training waves-effect waves-light btn'>End Training</button>
+                <button class='continue-training waves-effect waves-light btn'>Continue Training</button>
+              </div>
+            </div>
+            <div class='debugger-card' style='display:none'>
+              <div class='spacer'>
+                <button class='debug waves-effect waves-light btn'>Debug</button>
+              </div>
+              <div class='spacer debug-stats' style='display:none;'>
+                <div> State: <span class='debug-state'></span></div>
+                <div> Times Seen: <span class='debug-timesseen'></span></div>
+                <div> <span class='debug-random'></span></div>
+                <div> Stack: <ul class='debug-stack'></ul></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 

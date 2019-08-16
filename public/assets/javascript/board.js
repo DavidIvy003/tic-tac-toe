@@ -27,7 +27,21 @@ class Board {
     return true
   }
   updateBoard() {
-    this.state.forEach((value, index) => $('.square[data-choice="' + index +'"]').html(value ? value : ''))
+    const x = "\u2715"
+    const o = "\u25CB"
+    this.state.forEach((value, index) => {
+      const $square = $('.square[data-choice="' + index + '"]')
+      $square.removeClass('x')
+      $square.removeClass('o')
+      if (!value) return $square.text('')
+      if (value === "X") {
+        $square.addClass('x')
+        $square.text(x)
+      } else {
+        $square.addClass('o')
+        $square.text(o)
+      }
+    })
   }
 }
 

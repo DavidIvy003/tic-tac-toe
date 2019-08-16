@@ -90,7 +90,7 @@ class Game {
     $('.stats .games-played').html(this.gamesPlayed)
     $('.stats .computer-wins').html(computerPlayer.wins)
     $('.stats .computer-loses').html(computerPlayer.loses)
-    $('.stats .computer-certainty').html(computerPlayer.computer.certainty)
+    $('.stats .computer-certainty').html(computerPlayer.computer.certainty / computerPlayer.certaintyRate * 100)
   }
 }
 
